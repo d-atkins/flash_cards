@@ -6,4 +6,8 @@ class Deck
     @count = cards.size
   end
 
+  def cards_in_category(category)
+    @cards.count {|card| card.category == category}
+  end
+
 end
