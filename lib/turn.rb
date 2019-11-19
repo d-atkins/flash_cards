@@ -8,4 +8,6 @@ class Turn
   def correct?
     return @card.answer == guess
   end
+
+
 end
