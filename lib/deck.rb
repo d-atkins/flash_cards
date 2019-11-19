@@ -7,7 +7,7 @@ class Deck
   end
 
   def cards_in_category(category)
-    @cards.count {|card| card.category == category}
+    new_cards = cards.keep_if{|card| card.category == category}
   end
 
 end
