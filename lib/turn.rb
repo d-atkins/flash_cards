@@ -9,5 +9,12 @@ class Turn
     return @card.answer == guess
   end
 
+  def feedback
+    if self.correct?
+      return "Correct!"
+    else
+      return "Incorrect."
+    end
+  end
 
 end
