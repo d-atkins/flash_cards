@@ -4,4 +4,8 @@ class Turn
     @guess = guess
     @card = card
   end
+
+  def correct?
+    return @card.answer == guess
+  end
 end
