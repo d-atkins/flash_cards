@@ -155,19 +155,30 @@ class RoundTest < Minitest::Test
 
     assert_equal 50.0, round.percent_correct
   end
-  #
-  # def test_percent_correct_by_category
-  #   card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-  #   card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
-  #   card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
-  #   cards = [card_1, card_2, card_3]
-  #   deck = Deck.new(cards)
-  #   round = Round.new(deck)
-  #   round.take_turn("Juneau")
-  #   round.take_turn("Venus")
-  #
-  #   assert_equal 100.0, round.percent_correct_by_category(:Stem)
-  # end
 
+  def test_percent_correct_by_category
+    card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
+    card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
+    cards = [card_1, card_2, card_3]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Juneau")
+    round.take_turn("Venus")
 
+    assert_equal 100.0, round.percent_correct_by_category(:Geography)
+  end
+
+  def test_current_card_changes_to_third_card
+    card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
+    card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
+    cards = [card_1, card_2, card_3]
+    deck = Deck.new(cards)
+    round = Round.new(deck)
+    round.take_turn("Juneau")
+    round.take_turn("Venus")
+
+    assert_equal card_3, round.current_card
+  end
 end
