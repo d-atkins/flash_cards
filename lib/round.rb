@@ -7,6 +7,7 @@ class Round
   def initialize (deck)
     @deck = deck
     @current_card = deck.cards[0]
+    @turns = []
   end
 
   # def take_turn (guess)
