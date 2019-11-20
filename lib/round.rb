@@ -18,7 +18,7 @@ class Round
     if turn.correct?
       @number_correct += 1
     end
-
+    puts turn.feedback
     @current_card = deck.cards[@deck.cards.index(@current_card) + 1]
     return turn
   end
@@ -49,6 +49,22 @@ class Round
     end
     denominator = turns_deck.cards_in_category(category).count
     return 100 * (numerator/denominator).to_f
+  end
+
+  def start
+    puts "Welcome! You're playing with #{@deck.count} cards."
+    puts "-------------------------------------------------"
+    @deck.cards.each do |card|
+      puts "This is card number #{turns.count + 1} out of #{@deck.count}."
+      # puts "Question: #{@current_card.question}"
+      puts "Question: #{card.question}"
+      user_guess = gets.chomp.capitalize
+      take_turn(user_guess)
+    end
+    # puts "****** Game over! ******"
+    # puts "You had #{number_correct} correct guesses out of #{@deck.count} for a total score of 75%."
+
+
   end
 
 end
