@@ -22,8 +22,7 @@ class Round
     @current_card = deck.cards[@deck.cards.index(@current_card) + 1]
     return turn
   end
-  #
-  #
+
   def number_correct_by_category (category)
     hits = 0
     @turns.each do |turn|
@@ -34,12 +33,12 @@ class Round
     return hits
   end
 
-  # def percent_correct
-  #   numerator = @number_correct.to_f
-  #   denominator = turns.count.to_f
-  # 
-  #   return 100 * (numerator/denominator)
-  # end
+  def percent_correct
+    numerator = @number_correct.to_f
+    denominator = turns.count.to_f
+  
+    return 100 * (numerator/denominator)
+  end
   #
   # def percent_correct_by_category (category)
   #   numerator = number_correct_by_category(category).to_f
