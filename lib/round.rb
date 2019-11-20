@@ -36,16 +36,19 @@ class Round
   def percent_correct
     numerator = @number_correct.to_f
     denominator = turns.count.to_f
-  
+
     return 100 * (numerator/denominator)
   end
-  #
-  # def percent_correct_by_category (category)
-  #   numerator = number_correct_by_category(category).to_f
-  #   denominator = deck.cards_in_category(category).count.to_f
-  #   require 'pry'; binding.pry
-  #   return 100 * (numerator/denominator).to_f
-  # end
 
+#note: turns_deck is made of turns
+  def percent_correct_by_category (category)
+    numerator = number_correct_by_category(category).to_f
+    turns_deck = Deck.new([])
+    @turns.each do |turn|
+      turns_deck.cards << turn.card
+    end
+    denominator = turns_deck.cards_in_category(category).count
+    return 100 * (numerator/denominator).to_f
+  end
 
 end
