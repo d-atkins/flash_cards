@@ -27,17 +27,25 @@ class Round
   def number_correct_by_category (category)
     hits = 0
     @turns.each do |turn|
-      if turn.correct?
+      if turn.card.category == category && turn.correct?
         hits += 1
       end
     end
     return hits
   end
-  #
+
   # def percent_correct
+  #   numerator = @number_correct.to_f
+  #   denominator = turns.count.to_f
+  # 
+  #   return 100 * (numerator/denominator)
   # end
   #
-  # def percent_correct_by_category
+  # def percent_correct_by_category (category)
+  #   numerator = number_correct_by_category(category).to_f
+  #   denominator = deck.cards_in_category(category).count.to_f
+  #   require 'pry'; binding.pry
+  #   return 100 * (numerator/denominator).to_f
   # end
 
 
