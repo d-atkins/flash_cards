@@ -24,8 +24,15 @@ class Round
   end
   #
   #
-  # def correct_by_category
-  # end
+  def number_correct_by_category (category)
+    hits = 0
+    @turns.each do |turn|
+      if turn.correct?
+        hits += 1
+      end
+    end
+    return hits
+  end
   #
   # def percent_correct
   # end
