@@ -95,7 +95,8 @@ class RoundTest < Minitest::Test
     cards = [card_1, card_2, card_3]
     deck = Deck.new(cards)
     round = Round.new(deck)
-    new_turn = round.take_turn("Juneau")
+    round.take_turn("Juneau")
+    round.take_turn("Venus")
 
     assert_equal 1, round.number_correct
   end
@@ -125,5 +126,6 @@ class RoundTest < Minitest::Test
 
     assert_equal "Incorrect.", round.turns.last.feedback
   end
+
 
 end
