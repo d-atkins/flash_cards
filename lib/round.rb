@@ -10,10 +10,12 @@ class Round
     @turns = []
   end
 
-  # def take_turn (guess)
-  #   get first card in deck
-  #   use guess and card to create a turn object
-  # end
+  def take_turn (guess)
+    turn = Turn.new(guess, @current_card)
+    @turns << turn
+    @current_card = deck.cards[@deck.cards.index(@current_card) + 1]
+    return turn
+  end
   #
   # def number_correct
   # end
