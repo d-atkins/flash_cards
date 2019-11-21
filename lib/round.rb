@@ -56,11 +56,11 @@ class Round
     @deck.cards.each do |card|
       puts "This is card number #{turns.count + 1} out of #{@deck.count}."
       puts "Question: #{card.question}"
-      user_guess = gets.chomp.capitalize
+      user_guess = gets.chomp
       take_turn(user_guess)
     end
     puts "****** Game over! ******"
-    puts "You had #{number_correct} correct guesses out of #{@deck.count} for a total score of #{percent_correct}%."
+    puts "You had #{number_correct} correct guesses out of #{@deck.count} for a total score of #{percent_correct.to_i}%."
     categories = []
     deck.cards.each do |card|
       if !categories.include?(card.category)
