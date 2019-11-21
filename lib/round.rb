@@ -40,7 +40,6 @@ class Round
     return 100 * (numerator/denominator)
   end
 
-#note: turns_deck is made of turns
   def percent_correct_by_category (category)
     numerator = number_correct_by_category(category).to_f
     turns_deck = Deck.new([])
@@ -56,7 +55,6 @@ class Round
     puts "-------------------------------------------------"
     @deck.cards.each do |card|
       puts "This is card number #{turns.count + 1} out of #{@deck.count}."
-      # puts "Question: #{@current_card.question}"
       puts "Question: #{card.question}"
       user_guess = gets.chomp.capitalize
       take_turn(user_guess)
