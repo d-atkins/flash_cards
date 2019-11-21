@@ -18,7 +18,7 @@ class Round
     if turn.correct?
       @number_correct += 1
     end
-
+    puts turn.feedback
     @current_card = deck.cards[@deck.cards.index(@current_card) + 1]
     return turn
   end
@@ -40,7 +40,6 @@ class Round
     return 100 * (numerator/denominator)
   end
 
-#note: turns_deck is made of turns
   def percent_correct_by_category (category)
     numerator = number_correct_by_category(category).to_f
     turns_deck = Deck.new([])
@@ -49,6 +48,29 @@ class Round
     end
     denominator = turns_deck.cards_in_category(category).count
     return 100 * (numerator/denominator).to_f
+  end
+
+  def start
+    puts "Welcome! You're playing with #{@deck.count} cards."
+    puts "-------------------------------------------------"
+    @deck.cards.each do |card|
+      puts "This is card number #{turns.count + 1} out of #{@deck.count}."
+      puts "Question: #{card.question}"
+      user_guess = gets.chomp.capitalize
+      take_turn(user_guess)
+    end
+    puts "****** Game over! ******"
+    puts "You had #{number_correct} correct guesses out of #{@deck.count} for a total score of #{percent_correct}%."
+    categories = []
+    deck.cards.each do |card|
+      if !categories.include?(card.category)
+        categories << card.category
+      end
+    end
+    categories.each do |category|
+      puts "#{category} - #{percent_correct_by_category(category).to_i}% correct"
+    end
+
   end
 
 end
