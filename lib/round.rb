@@ -61,9 +61,17 @@ class Round
       user_guess = gets.chomp.capitalize
       take_turn(user_guess)
     end
-    # puts "****** Game over! ******"
-    # puts "You had #{number_correct} correct guesses out of #{@deck.count} for a total score of 75%."
-
+    puts "****** Game over! ******"
+    puts "You had #{number_correct} correct guesses out of #{@deck.count} for a total score of #{percent_correct}%."
+    categories = []
+    deck.cards.each do |card|
+      if !categories.include?(card.category)
+        categories << card.category
+      end
+    end
+    categories.each do |category|
+      puts "#{category} - #{percent_correct_by_category(category).to_i}% correct"
+    end
 
   end
 
